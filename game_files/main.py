@@ -2,7 +2,7 @@ from pygame import *
 
 font.init()
 
-class Plane:
+class Plane():
     def __init__(self, x, y, w, h, img):
         self.rect = rect.Rect(x, y, w, h)
         self.img = transform.scale(image.load(img), (w, h))
@@ -112,7 +112,7 @@ while closeall != True:
         if closeall:
             close = True
         if win:
-            w.blit(font.SysFont('Arial', 30).render("You win! Time: " + str(timevar) +"seconds (1-try again)", True, (0, 0, 0)), (50, 130))
+            w.blit(font.SysFont('Arial', 30).render("You win! Time: " + str(timevar) +"minutes (1-try again)", True, (0, 0, 0)), (50, 130))
         else:
             w.blit(font.SysFont('Arial', 30).render("Crash! (1-try again)", True, (0, 0, 0)), (50, 130))
         display.update()

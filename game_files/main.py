@@ -99,7 +99,7 @@ while closeall != True:
         display.update()
         clock.tick(60)
     close = False
-    timevar /= 300
+    timevar /= 360
     while close != True:
         w.fill((100, 100, 255))
         for i in event.get():

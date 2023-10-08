@@ -1,0 +1,2 @@
+Manual: To install the video game download the game files and run "flight_simulator.exe". You can delete the .py file if you wish. WASD or arrows for movement. Don't fly at speeds under 100kmh in order to avoid stalling. Climb below 5degs in runwauys is forbidden. Enjoy! 
+Image source: https://www.vecteezy.com/png/1208470-airplane. No copyright infringement intended

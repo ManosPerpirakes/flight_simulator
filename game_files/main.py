@@ -88,6 +88,7 @@ while closeall != True:
     planeinrunway2 = False
     win = False
     while not close:
+        fps = int(clock.get_fps())
         w.fill((100, 100, 255))
         for i in event.get():
             if i.type == QUIT:
@@ -119,6 +120,7 @@ while closeall != True:
         w.blit(font.SysFont('Arial', 30).render('climb: ' + str(speedy) + "deg", True, (0, 0, 0)), (1000, 140))
         w.blit(font.SysFont('Arial', 30).render('altitude: ' + str(altitude) + "m", True, (0, 0, 0)), (1000, 180))
         w.blit(font.SysFont('Arial', 30).render('distance to runway: ' + str(distancetorunway) + "m", True, (0, 0, 0)), (1000, 220))
+        w.blit(font.SysFont('Arial', 30).render("FPS: " + str(fps), True, (0, 0, 0)), (1000, 300))
         if autopilot:
             w.blit(font.SysFont('Arial', 30).render("Autopilot: ON", True, (0, 0, 0)), (1000, 260))
         else:
@@ -140,7 +142,9 @@ while closeall != True:
         clock.tick(60)
     close = False
     timevar /= 3600
+    timevar = round(timevar, 1)
     while close != True:
+        fps = int(clock.get_fps())
         w.fill((100, 100, 255))
         for i in event.get():
             if i.type == QUIT:
@@ -152,8 +156,9 @@ while closeall != True:
         if closeall:
             close = True
         if win:
-            w.blit(font.SysFont('Arial', 30).render("You win! Time: " + str(timevar) +"minutes (1-try again)", True, (0, 0, 0)), (50, 130))
+            w.blit(font.SysFont('Arial', 30).render("You win! Time: " + str(timevar) +"minutes (1-try again)", True, (0, 0, 0)), (50, 100))
         else:
-            w.blit(font.SysFont('Arial', 30).render("Crash! (1-try again)", True, (0, 0, 0)), (50, 130))
+            w.blit(font.SysFont('Arial', 30).render("Crash! (1-try again)", True, (0, 0, 0)), (50, 100))
+        w.blit(font.SysFont('Arial', 30).render("FPS: " + str(fps), True, (0, 0, 0)), (50, 140))
         display.update()
         clock.tick(60)

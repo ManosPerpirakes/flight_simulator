@@ -73,7 +73,7 @@ while closeall != True:
     runways = [runway, runway2]
     buildings = []
     colours = []
-    for i in range(10000):
+    for i in range(1000):
         height = randint(50, 200)
         buildings.append(rect.Rect((randint(120000, (10000000 - 20000))), (750 - height), randint(50, 100), height))
         colour = randint(50, 150)

@@ -114,6 +114,7 @@ while closeall != True:
         player.showairplane()
         if not pause:
             player.move()
+            timevar += 1
         else:
             w.blit(font.SysFont('Arial', 60).render("Game paused", True, (0, 0, 0)), (100, 100))
         w.blit(font.SysFont('Arial', 30).render('speed: ' + str(speedx) + "km/h", True, (0, 0, 0)), (1000, 100))
@@ -129,7 +130,6 @@ while closeall != True:
         if player.rect.colliderect(runway2) and speedx == 0:
             close = True
             win = True
-        timevar += 1
         counter = 0
         for i in buildings:
             draw.rect(w, colours[counter], i)

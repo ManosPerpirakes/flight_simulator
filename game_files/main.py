@@ -29,10 +29,10 @@ class Plane():
             if speedx < 10:
                 speedx = 0
         if keys[K_w] or keys[K_UP]:
-            if not (altitude < 110 and speedx < 300):
-                speedy += 0.1
+            speedy += 0.1
         if keys[K_s] or keys[K_DOWN]:
-            speedy -= 0.1
+            if not ((planeinrunway1 or planeinrunway2) and speedy < -4.8):
+                speedy -= 0.1
         if autopilot:
             speedy = 0
         if speedx > 0:
@@ -51,7 +51,7 @@ class Plane():
             elif (not self.rect.colliderect(i)) and counterlocal == 2:
                 planeinrunway2 = False
             counterlocal += 1
-        if not (planeinrunway1 or planeinrunway2) and speedx < 100:
+        if not (planeinrunway1 or planeinrunway2) and speedx < 250:
             speedy = -5
             w.blit(font.SysFont('Arial', 100).render("STALL", True, (0, 0, 0)), (100, 100))
         speedx = round(speedx, 1)

@@ -68,6 +68,14 @@ while closeall != True:
     player = Plane(100, 650, 187, 100, "airplane_img.png")
     clock = time.Clock()
     close = False
+    clouds = [
+        rect.Rect(randint(0, 2000), randint(0, 400), randint(50, 400), randint(50, 70)),
+        rect.Rect(randint(0, 2000), randint(0, 400), randint(50, 400), randint(50, 70)),
+        rect.Rect(randint(0, 2000), randint(0, 400), randint(50, 400), randint(50, 70)),
+        rect.Rect(randint(0, 2000), randint(0, 400), randint(50, 400), randint(50, 70)),
+        rect.Rect(randint(0, 2000), randint(0, 400), randint(50, 400), randint(50, 70)),
+        rect.Rect(randint(0, 2000), randint(0, 400), randint(50, 400), randint(50, 70))
+    ]
     runway = rect.Rect(0, 700, 100000, 50)
     runway2 = rect.Rect(10000000, 700, 100000, 50)
     runways = [runway, runway2]
@@ -90,6 +98,8 @@ while closeall != True:
     while not close:
         fps = int(clock.get_fps())
         w.fill((100, 100, 255))
+        for i in clouds:
+            draw.rect(w, (255, 255, 255), i)
         for i in event.get():
             if i.type == QUIT:
                 close = True
@@ -115,6 +125,10 @@ while closeall != True:
         if not pause:
             player.move()
             timevar += 1
+            for i in range(len(clouds)):
+                clouds[i].x -= 2 
+                if clouds[i].x < 0:
+                    clouds[i] = rect.Rect(randint(1750, 2500), randint(0, 400), randint(50, 400), randint(50, 70))
         else:
             w.blit(font.SysFont('Arial', 60).render("Game paused", True, (0, 0, 0)), (100, 100))
         w.blit(font.SysFont('Arial', 30).render('speed: ' + str(speedx) + "km/h", True, (0, 0, 0)), (1000, 100))
